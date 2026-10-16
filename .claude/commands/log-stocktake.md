@@ -1,6 +1,10 @@
+---
+description: "Record a physical observation and verify an unverified device as stock."
+---
+
 # log-stocktake
 
-Use the log-stocktake operation with operator-supplied values.
+Record a physical observation and verify an unverified device as stock.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

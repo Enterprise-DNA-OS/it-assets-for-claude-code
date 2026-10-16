@@ -1,6 +1,10 @@
+---
+description: "Record a custodian, team and lawful purpose with a retention review date."
+---
+
 # add-person
 
-Use the add-person operation with operator-supplied values.
+Record a custodian, team and lawful purpose with a retention review date.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

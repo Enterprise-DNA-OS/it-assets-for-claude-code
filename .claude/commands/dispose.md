@@ -1,6 +1,10 @@
+---
+description: "Record approved disposal after custody and installation checks pass."
+---
+
 # dispose
 
-Use the dispose operation with operator-supplied values.
+Record approved disposal after custody and installation checks pass.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

@@ -1,3 +1,7 @@
+---
+description: "Run record checks and distinguish house rules from sourced guidance."
+---
+
 # compliance
 
 Run record checks and distinguish house rules from sourced guidance.

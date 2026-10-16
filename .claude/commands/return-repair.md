@@ -1,6 +1,10 @@
+---
+description: "Record the repair check and return equipment to available stock."
+---
+
 # return-repair
 
-Use the return-repair operation with operator-supplied values.
+Record the repair check and return equipment to available stock.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

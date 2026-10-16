@@ -1,6 +1,10 @@
+---
+description: "List the current asset register and recorded lifecycle states."
+---
+
 # assets
 
-Use the assets operation with operator-supplied values.
+List the current asset register and recorded lifecycle states.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

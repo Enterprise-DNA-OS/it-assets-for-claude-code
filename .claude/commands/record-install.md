@@ -1,6 +1,10 @@
+---
+description: "Record an observed installation, including any entitlement deficit."
+---
+
 # record-install
 
-Use the record-install operation with operator-supplied values.
+Record an observed installation, including any entitlement deficit.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

@@ -1,6 +1,10 @@
+---
+description: "Compare original AssetExplorer source values with locally verified state."
+---
+
 # imported-assets
 
-Use the imported-assets operation with operator-supplied values.
+Compare original AssetExplorer source values with locally verified state.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

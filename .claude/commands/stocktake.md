@@ -1,3 +1,7 @@
+---
+description: "Review physical observations and identify devices to check."
+---
+
 # stocktake
 
 Review physical observations and identify devices to check.

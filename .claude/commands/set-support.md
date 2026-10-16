@@ -1,6 +1,10 @@
+---
+description: "Update an asset owner and supplied warranty or support dates."
+---
+
 # set-support
 
-Use the set-support operation with operator-supplied values.
+Update an asset owner and supplied warranty or support dates.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

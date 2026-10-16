@@ -1,6 +1,10 @@
+---
+description: "Read the append-only operator audit trail and supplied evidence."
+---
+
 # history
 
-Use the history operation with operator-supplied values.
+Read the append-only operator audit trail and supplied evidence.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

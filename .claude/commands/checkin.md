@@ -1,6 +1,10 @@
+---
+description: "Record the actual return and leave the device unverified until checked."
+---
+
 # checkin
 
-Use the checkin operation with operator-supplied values.
+Record the actual return and leave the device unverified until checked.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

@@ -1,6 +1,10 @@
+---
+description: "List active handovers with people, due dates and departure records."
+---
+
 # custody
 
-Use the custody operation with operator-supplied values.
+List active handovers with people, due dates and departure records.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

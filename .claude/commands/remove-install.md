@@ -1,6 +1,10 @@
+---
+description: "Record actual software removal with a date and evidence."
+---
+
 # remove-install
 
-Use the remove-install operation with operator-supplied values.
+Record actual software removal with a date and evidence.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

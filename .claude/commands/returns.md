@@ -1,3 +1,7 @@
+---
+description: "Review overdue equipment and departed staff with open custody."
+---
+
 # returns
 
 Review overdue equipment and departed staff with open custody.

@@ -1,6 +1,10 @@
+---
+description: "Record an actual staff departure and preserve outstanding custody."
+---
+
 # depart-person
 
-Use the depart-person operation with operator-supplied values.
+Record an actual staff departure and preserve outstanding custody.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

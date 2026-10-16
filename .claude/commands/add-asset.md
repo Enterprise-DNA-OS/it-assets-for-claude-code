@@ -1,6 +1,10 @@
+---
+description: "Register a device as unverified with its tag, owner and support dates."
+---
+
 # add-asset
 
-Use the add-asset operation with operator-supplied values.
+Register a device as unverified with its tag, owner and support dates.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

@@ -1,6 +1,10 @@
+---
+description: "Mark available equipment under repair with the operator evidence."
+---
+
 # send-repair
 
-Use the send-repair operation with operator-supplied values.
+Mark available equipment under repair with the operator evidence.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

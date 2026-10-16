@@ -1,6 +1,10 @@
+---
+description: "Record purchased per-device seats, expiry and agreement evidence."
+---
+
 # add-licence
 
-Use the add-licence operation with operator-supplied values.
+Record purchased per-device seats, expiry and agreement evidence.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

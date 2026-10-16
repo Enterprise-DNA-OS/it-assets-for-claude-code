@@ -1,6 +1,10 @@
+---
+description: "Write a complete local JSON archive without overwriting an existing file."
+---
+
 # export
 
-Use the export operation with operator-supplied values.
+Write a complete local JSON archive without overwriting an existing file.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

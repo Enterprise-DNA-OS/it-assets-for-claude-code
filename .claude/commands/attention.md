@@ -1,6 +1,10 @@
+---
+description: "Find overdue returns, stale observations, approaching dates and licence gaps."
+---
+
 # attention
 
-Use the attention operation with operator-supplied values.
+Find overdue returns, stale observations, approaching dates and licence gaps.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

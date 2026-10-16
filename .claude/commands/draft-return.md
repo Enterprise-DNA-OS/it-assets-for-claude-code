@@ -1,3 +1,7 @@
+---
+description: "Write an internal return brief. Never send it."
+---
+
 # draft-return
 
 Write an internal return brief. Never send it.

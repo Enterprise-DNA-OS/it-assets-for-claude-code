@@ -1,3 +1,7 @@
+---
+description: "Review retired devices and remaining installations."
+---
+
 # disposal-queue
 
 Review retired devices and remaining installations.

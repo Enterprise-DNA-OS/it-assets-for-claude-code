@@ -1,3 +1,7 @@
+---
+description: "Import a prepared AssetExplorer asset CSV. Preserve source history separately from current custody."
+---
+
 # import
 
 Import a prepared AssetExplorer asset CSV. Preserve source history separately from current custody.

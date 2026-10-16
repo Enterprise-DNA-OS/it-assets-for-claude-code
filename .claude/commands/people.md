@@ -1,6 +1,10 @@
+---
+description: "List custodians and their recorded purpose and review dates."
+---
+
 # people
 
-Use the people operation with operator-supplied values.
+List custodians and their recorded purpose and review dates.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

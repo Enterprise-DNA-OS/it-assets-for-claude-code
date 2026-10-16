@@ -1,6 +1,10 @@
+---
+description: "Read one device with custody, observations, installations and disposal evidence."
+---
+
 # asset
 
-Use the asset operation with operator-supplied values.
+Read one device with custody, observations, installations and disposal evidence.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

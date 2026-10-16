@@ -1,3 +1,7 @@
+---
+description: "Compare recorded per-device installations with seat evidence. Do not declare legal compliance."
+---
+
 # licences
 
 Compare recorded per-device installations with seat evidence. Do not declare legal compliance.

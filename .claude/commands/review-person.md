@@ -1,6 +1,10 @@
+---
+description: "Record the current lawful retention purpose and next review date."
+---
+
 # review-person
 
-Use the review-person operation with operator-supplied values.
+Record the current lawful retention purpose and next review date.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

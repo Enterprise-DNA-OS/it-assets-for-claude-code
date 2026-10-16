@@ -1,6 +1,10 @@
+---
+description: "Update a per-device entitlement with new seat and expiry evidence."
+---
+
 # renew-licence
 
-Use the renew-licence operation with operator-supplied values.
+Update a per-device entitlement with new seat and expiry evidence.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

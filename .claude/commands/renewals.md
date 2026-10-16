@@ -1,3 +1,7 @@
+---
+description: "Review warranty, support and licence dates due within 60 days, including overdue dates."
+---
+
 # renewals
 
 Review warranty, support and licence dates due within 60 days, including overdue dates.

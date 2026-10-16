@@ -1,6 +1,10 @@
+---
+description: "Retire an available device after all custody has been returned."
+---
+
 # retire
 
-Use the retire operation with operator-supplied values.
+Retire an available device after all custody has been returned.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

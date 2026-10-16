@@ -1,6 +1,10 @@
+---
+description: "Issue verified stock to an active person with handover evidence and a due date."
+---
+
 # checkout
 
-Use the checkout operation with operator-supplied values.
+Issue verified stock to an active person with handover evidence and a due date.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 

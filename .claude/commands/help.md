@@ -1,6 +1,10 @@
+---
+description: "Show exact command flags and required inputs."
+---
+
 # help
 
-Use the help operation with operator-supplied values.
+Show exact command flags and required inputs.
 
 Read README.md and docs/compliance.md first. Run npm run assets -- help for exact syntax.
 
