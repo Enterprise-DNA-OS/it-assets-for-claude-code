@@ -1,11 +1,44 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "custody-record",
+    "title": "Equipment custody record",
+    "for_each": "select c.id,a.tag||' - '||p.name name from custody c join assets a on a.id=c.asset_id join people p on p.id=c.person_id",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Recorded handover and return",
+        "note": "An operator record, not a signed acknowledgement.",
+        "sql": "select tag,asset,person,issued_on,due_on,returned_on,issue_evidence,return_evidence from v_custody where id=$1"
+      }
+    ]
+  },
+  {
+    "name": "stocktake-pack",
+    "title": "Physical stocktake record",
+    "for_each": "select id,tag name from assets where state<>'disposed'",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Asset",
+        "sql": "select tag,name,site,owner,state,serial,warranty_until,support_until from assets where id=$1"
+      },
+      {
+        "title": "Observations",
+        "sql": "select seen_on,site,evidence,actor from observations where asset_id=$1 order by seen_on desc"
+      }
+    ]
+  },
+  {
+    "name": "disposal-record",
+    "title": "Disposal evidence record",
+    "for_each": "select d.id,a.tag name from disposals d join assets a on a.id=d.asset_id",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Operator-confirmed evidence",
+        "note": "This record does not certify sanitisation. Verify the evidence itself.",
+        "sql": "select a.tag,a.serial,d.disposed_on,d.method,d.evidence,d.approved_by,d.retention_review from disposals d join assets a on a.id=d.asset_id where d.id=$1"
+      }
     ]
   }
 ]

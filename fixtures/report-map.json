@@ -1,0 +1,10 @@
+{
+  "key": "Asset ID",
+  "name": "Asset Name",
+  "tag": "Asset Tag",
+  "serial": "Serial Number",
+  "category": "Product Type",
+  "site": "Site",
+  "warranty": "Warranty Expiry Date",
+  "support": "Support End Date"
+}

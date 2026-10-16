@@ -1,13 +1,36 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "IT Assets for Claude Code: what needs attention, rendered by npm run view",
+    "title": "IT asset review",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Returns",
+        "sql": "select tag,person,due_on,departed_on from v_custody where returned_on is null order by due_on"
+      },
+      {
+        "title": "Support and renewals",
+        "sql": "select * from v_renewals order by due_on"
+      }
+    ]
+  },
+  {
+    "name": "stocktake",
+    "title": "Stocktake and custody",
+    "sections": [
+      {
+        "title": "Physical observations",
+        "sql": "select tag,name,site,state,last_seen,days_unseen from v_stocktake order by tag"
+      }
+    ]
+  },
+  {
+    "name": "licences",
+    "title": "Licence evidence review",
+    "sections": [
+      {
+        "title": "Per-device records only",
+        "note": "Review actual contracts. Counts do not establish legal compliance.",
+        "sql": "select name,seats,installed,available,expires_on from v_licences order by name"
       }
     ]
   }

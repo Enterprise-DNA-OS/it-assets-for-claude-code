@@ -1,43 +1,56 @@
-# IT Assets for Claude Code: operating instructions
+# IT Assets for Claude Code
 
-This file is the brain. Claude Code reads it at the start of every session. It says who this is for, how work gets done, and the one right way to do each recurring job.
+Read README.md, docs/compliance.md and the matching .claude/commands recipe before work. One business, trusted operators. Every answer starts with the CLI. Demo data is fictional.
 
-## Who this is for
+## Routing
 
-- **Business:** [YOUR BUSINESS]
-- **Operator:** [YOUR NAME], [your role]
-- **What matters most:** [the one or two outcomes you care about]
-
-Fill this in once. A worker with context knows. A worker without it guesses.
-
-## How to work
-
-1. **Take a brief, not a script.** The operator describes the outcome. You run the right command and present the answer.
-2. **Read before you write.** Before drafting anything about a record, read its full history first.
-3. **Plain language.** Short sentences. No filler. Numbers in tables.
-4. **Silent success, loud problems.** No play-by-play. Say what broke and what you did about it.
-5. **Stop at the line.** Anything that sends, deletes, or faces a customer waits for a yes in this session.
-
-## Routing table: one right way for each recurring job
-
-| When the operator asks for... | Use this |
+| Job | Command |
 |---|---|
-| <!-- TODO(author): one row per slash command --> | `/...` |
+| help | /help |
+| assets | /assets |
+| asset | /asset |
+| people | /people |
+| custody | /custody |
+| Review overdue equipment and departed staff with open custody. | /returns |
+| Review physical observations and identify devices to check. | /stocktake |
+| Review warranty, support and licence dates due within 60 days, including overdue dates. | /renewals |
+| Compare recorded per-device installations with seat evidence. Do not declare legal compliance. | /licences |
+| Review retired devices and remaining installations. | /disposal-queue |
+| Run record checks and distinguish house rules from sourced guidance. | /compliance |
+| attention | /attention |
+| Write the Monday review from custody, attention and compliance. | /weekly-review |
+| history | /history |
+| imported assets | /imported-assets |
+| add person | /add-person |
+| depart person | /depart-person |
+| review person | /review-person |
+| add asset | /add-asset |
+| log stocktake | /log-stocktake |
+| checkout | /checkout |
+| checkin | /checkin |
+| set support | /set-support |
+| send repair | /send-repair |
+| return repair | /return-repair |
+| retire | /retire |
+| dispose | /dispose |
+| add licence | /add-licence |
+| renew licence | /renew-licence |
+| record install | /record-install |
+| remove install | /remove-install |
+| Import a prepared AssetExplorer asset CSV. Preserve source history separately from current custody. | /import |
+| export | /export |
+| Write an internal return brief. Never send it. | /draft-return |
+| Change a field or rule with a tested migration | /customise |
+| Add a read-only report | /new-view |
 
-If an ask fits nothing here, run the CLI directly (`npm run <cli> -- --help`) and then propose a new command for it.
+## Rules
 
-## Hard rules
+Read before writing. Every mutation requires the operator name and supports a dry run. Never invent custody, a physical observation, licence rights, sanitisation evidence or an approver. Imports preserve reported source history and do not verify it. Distinguish observation dates from report generation dates. Counts do not prove legal compliance.
 
-- Never send email or messages from here. Draft to `drafts/`, a person sends.
-- Never delete records without an explicit yes in this session. Prefer marking closed or archived.
-- Never invent a record. If a name is ambiguous, list the candidates and ask.
-- The database is the source of truth. If the answer is not in it, say so.
+Never send, publish, delete records or connect a live system without the operator's specific instruction. Drafts stay local. Keep owner database connections out of browsers. Review access roles and backup retention before shared use. Audit, source, observation and disposal records are append-only.
 
-## Where things live
+## Files
 
-- `scripts/` the CLI. `scripts/lib/db.mjs` picks `DATABASE_URL` (Postgres, Supabase) or the embedded database in `.data/`.
-- `supabase/migrations/` the schema, plain SQL. `npm run migrate` applies it.
-- `.claude/commands/` the slash commands. Add one every time the same ask comes twice.
-- `docs/` the thesis and the guide for moving off ManageEngine AssetExplorer.
+scripts/assets.mjs is the one domain CLI. supabase/migrations holds forward SQL migrations. views.json and documents.json define read-only output. brand.json controls branding. Every runtime uses .claude/commands.
 
-Built by Enterprise DNA. Installed and run for you as part of Omni: https://enterprisedna.co/omni/instead-of/assetexplorer
+Omni by Enterprise DNA installs and operates your version: https://enterprisedna.co/omni/book/?offer=replace-software&utm_campaign=assetexplorer

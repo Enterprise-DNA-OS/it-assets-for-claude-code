@@ -1,115 +1,83 @@
-<h1 align="center">IT Assets for Claude Code</h1>
+# IT Assets for Claude Code
 
-<p align="center">
-  <strong>The open-source IT asset desk that is just a database and Claude Code.</strong>
-</p>
+Know who holds each device, what is overdue, which support dates are approaching and what evidence must exist before disposal.
 
-<p align="center">
-  Created by <a href="https://www.enterprisedna.co"><strong>Enterprise DNA</strong></a>. Free and open source. Works with Claude Code, Codex, OpenCode or Cursor.
-</p>
+## Three ways to own it
 
-<!-- three-doors -->
-<table align="center">
-  <tr>
-    <td align="center"><strong>Do it yourself</strong><br/>Clone it, run it, own it. Free, MIT.<br/><a href="#quick-start">Quick start</a></td>
-    <td align="center"><strong>We customise it</strong><br/>Your fields, your rules, your ManageEngine AssetExplorer data brought across.<br/><a href="https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=assetexplorer">Book a call</a></td>
-    <td align="center"><strong>We run it for you</strong><br/>Installed, connected and operated inside Omni. Setup fee, then a retainer.<br/><a href="https://enterprisedna.co/omni/instead-of/assetexplorer?utm_source=github&utm_medium=readme&utm_campaign=assetexplorer">How it works</a></td>
-  </tr>
-</table>
+- **Do it yourself:** free MIT code with Claude Code, Codex, OpenCode or Cursor. Hosting, agent subscriptions and your time remain your costs.
+- **We customise it:** Enterprise DNA maps your AssetExplorer records, adds your fields and rules, and builds the screens and connections you need. Choose a different stack if it suits your business.
+- **We run it for you:** Omni by Enterprise DNA installs, connects and operates your version. One setup fee, then a monthly retainer.
 
-<p align="center">
-  <a href="#what-is-this">What is this</a> &bull;
-  <a href="#why-no-front-end">Why no front end</a> &bull;
-  <a href="#quick-start">Quick start</a> &bull;
-  <a href="#the-commands">Commands</a> &bull;
-  <a href="#instead-of-assetexplorer">Instead of ManageEngine AssetExplorer</a> &bull;
-  <a href="#want-it-installed-and-run-for-you">Installed for you</a> &bull;
-  <a href="#license">License</a>
-</p>
+[Book 30 minutes with Sam](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=assetexplorer).
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Node-20+-339933?style=flat-square" alt="Node 20+" />
-  <img src="https://img.shields.io/badge/PostgreSQL-any-336791?style=flat-square" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PGlite-embedded-3ecf8e?style=flat-square" alt="PGlite" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
-</p>
+## Try the fictional estate
 
----
-
-## What is this
-
-IT Assets for Claude Code does the job you pay ManageEngine AssetExplorer for, as a Postgres database and a set of agent commands. There is no web front end. You open the folder in [Claude Code](https://claude.com/claude-code) (or Codex, OpenCode, Cursor: see `AGENTS.md`) and ask for what you want in plain language. It runs the right query, and it can answer questions the ManageEngine AssetExplorer dashboard cannot.
-
-<!-- TODO(author): the annual bill. One sentence: what a 10 to 50 person business typically pays ManageEngine AssetExplorer per year, all in, with a source. -->
-
-Want the same thing with a web front end, or built on a different stack? That is a customisation, and it is exactly what Enterprise DNA does: [book a call](https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=assetexplorer).
-
-<!-- TODO(author): two or three sentences on what this specific product covers and who it is for. -->
-
-## Why no front end
-
-- The front end was only ever there because the database was hard to talk to. That is no longer true.
-- Your data sits in plain Postgres tables you own. Any tool can read them. No export, no lock-in.
-- No seats, no tiers, no add-ons. Read [docs/why-no-front-end.md](docs/why-no-front-end.md) for the honest trade-offs too.
-
-## Quick start
-
-Sixty seconds, no database install (an embedded Postgres runs inside Node):
+Node 20 or newer. No database account required.
 
 ```bash
-git clone https://github.com/Enterprise-DNA-OS/it-assets-for-claude-code.git
-cd it-assets-for-claude-code
 npm install
 npm run demo
+npm run assets -- returns
+npm run assets -- stocktake
+npm run assets -- licences
+npm run assets -- weekly-review --json
+npm run view
+npm run docs
+npm test
 ```
 
-Then open the folder in Claude Code and type a slash command. <!-- TODO(author): name the first command to try. -->
+PGlite stores records in `.data/db`. Set `DATA_DIR` for a different embedded database or `DATABASE_URL` for PostgreSQL 15 or newer. Use an empty database and `npm run migrate` for real work. Never seed a business database. Protect exported files and rendered documents like the original database.
 
-### Use it with your own Postgres or Supabase
+## The working week
 
-Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same commands, shared data, no per-seat fee.
+Run `/returns` for overdue custody and departed staff, `/stocktake` for the physical register, `/renewals` for the next 60 days including overdue dates, `/licences` for recorded entitlements against installations, and `/disposal-queue` for retired equipment. `/weekly-review` brings these together with record checks.
 
-## The commands
+All new assets start **unverified**. `/log-stocktake` records an actual observation and moves an unverified asset into stock. `/checkout` requires stock and an active person. `/checkin` ends custody and returns the device to unverified until it is checked again. Repairs and retirement require custody to be returned first. Disposal requires retirement, no active installations, an approver, retention review and sanitisation evidence. The software records evidence. It does not wipe a device or authenticate a certificate.
 
-<!-- TODO(author): a table of the slash commands in .claude/commands and what each one does. -->
+Every mutation requires `--actor` and accepts `--dry-run`. Dry runs roll back records and audit events. Actor names are attribution, not authentication. Names match case-insensitively, tags match exactly, and id prefixes work. Ambiguity prints candidates and exits 1. Every command accepts `--json`. Use `npm run assets -- help` for all flags.
 
-| Command | What it does |
-|---|---|
-| `/...` | ... |
+Licence arithmetic is intentionally limited to one installation per device against a recorded seat count. It reports deficits even when observed installations exceed entitlement. It does not interpret vendor contracts, cores, CALs, concurrent use, bundles or downgrade rights. An expired record is a review prompt, not a legal conclusion. Procurement, network discovery, patching, remote control and device enforcement are separate systems.
 
-## Instead of assetexplorer
+## Ten questions answered from your records
 
-<!-- TODO(author): how to bring data across from ManageEngine AssetExplorer; link docs/replace-assetexplorer.md -->
+These are supported cross-record questions, not a claim that AssetExplorer cannot be configured to answer them.
 
-## Architecture
+1. Which departed staff still hold equipment, and is its return overdue? (`returns`)
+2. Which devices have never been physically verified? (`stocktake`)
+3. Which assets were last seen more than 90 days ago? (`attention`)
+4. Which warranty and support dates fall within 60 days, including overdue ones? (`renewals`)
+5. Which licence has more recorded installations than seats? (`licences`)
+6. What installation must be removed before a retired asset can be disposed of? (`disposal-queue`)
+7. What did the old system report about a custodian before local verification? (`imported-assets`)
+8. Whose custody records have passed their retention review date? (`compliance`)
+9. Who changed custody and what evidence did they record? (`history`, `asset`)
+10. What sanitisation and retention evidence accompanies a disposal? (`asset`)
 
-```
-it-assets-for-claude-code/
-  CLAUDE.md                 how the operator wants this run (routing table + house rules)
-  AGENTS.md                 the same, for Codex / OpenCode / Cursor / Gemini CLI
-  .claude/commands/         the slash commands
-  scripts/                  the CLI the commands drive
-  scripts/lib/db.mjs        one adapter: DATABASE_URL (pg) or embedded PGlite
-  supabase/migrations/      plain SQL schema
-  supabase/seed.sql         demo data
-  docs/                     the thesis and the migration guide
-```
+## Your first hour: ten things to ask for
 
-## Built for coding agents
+1. Put our name, logo and colours in `brand.json`.
+2. Show the overdue return and the recorded custodian.
+3. Find devices with no physical observation.
+4. Show support dates approaching this quarter.
+5. Explain the demo licence deficit.
+6. Map the columns in our AssetExplorer asset report.
+7. Run the import as a dry run and reconcile the counts.
+8. Verify one imported asset and record its actual custody.
+9. Add a custom department field through `/customise`.
+10. Add a read-only branch stocktake report through `/new-view`.
 
-The database, CLI and command recipes work with Claude Code, Codex, OpenCode or Cursor. Ask your coding agent for a new command and have it implement and test the change against the same records.
+## Moving your records
 
-## Contributing
+[The replacement guide](docs/replace-assetexplorer.md) explains the CSV report, explicit field map and one-command import. The fixture is synthetic. Test your own report before cutover. Raw source rows are preserved. Source state and custodian names do not create verified custody. Identical imports are skipped; changed source rows and identity collisions stop the whole import for reconciliation.
 
-Issues and pull requests are welcome. Keep the shape: plain SQL, a small CLI, a slash command per recurring job, no front end.
+`npm run docs` renders custody handover records, stocktake packs and disposal records as branded HTML. `npm run view` renders three read-only dashboards. `/draft-return` writes an internal brief under `drafts/` and sends nothing. Export archives every domain record and audit event in JSON. Restore is an operator-reviewed migration, not an automatic import.
 
-## Want it installed and run for you?
+## Deployment boundary
 
-Enterprise DNA installs IT Assets for Claude Code for your business, migrates your ManageEngine AssetExplorer data, connects it to the rest of your tools, and runs it for you as part of **Omni**, our managed Command Center. One setup fee, then a monthly retainer.
+One business and trusted operators. This base has no per-person permissions. Row security denies public access, views use caller privileges, and the CLI uses an owner connection. Never expose that connection to a browser. Network discovery, endpoint security and access control need separate deployment work. Read [the screen boundary](docs/why-no-front-end.md) and [record checks](docs/compliance.md) before real use.
 
-- Book a call: [enterprisedna.co/omni/book](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=assetexplorer)
-- Read more: [enterprisedna.co/omni/instead-of/assetexplorer](https://enterprisedna.co/omni/instead-of/assetexplorer?utm_source=github&utm_medium=readme&utm_campaign=assetexplorer)
+## Verification and licence
 
-## License
+`npm test` migrates and seeds a temporary database twice, exercises every CLI command and checks state transitions, dry-run rollback, ambiguous names, atomic imports, repeated imports, evidence gates, audit immutability, exports and HTML escaping. CI runs on Ubuntu, Windows and PostgreSQL. Only report a platform as passed after its job completes. `TEST_DATABASE_URL` must be an empty disposable database.
 
-MIT. Copyright (c) 2026 Enterprise DNA.
+MIT. Copyright 2026 Enterprise DNA. Independent of ManageEngine, Zoho and Anthropic.
