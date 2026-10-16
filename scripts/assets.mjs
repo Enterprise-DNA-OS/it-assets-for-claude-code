@@ -222,8 +222,8 @@ export function format(data){
   const keys=Object.keys(data[0]);const str=v=>typeof v==='object'&&v!==null?JSON.stringify(v):String(v??'');
   const rows=data.map(r=>keys.map(k=>str(r[k]).replace(/\r?\n/g,' ')));
   const widths=keys.map((k,i)=>Math.min(90,Math.max(k.length,...rows.map(r=>r[i].length))));
-  const line=r=>r.map((v,i)=>(v.length>widths[i]?v.slice(0,widths[i]-3)+'...':v).padEnd(widths[i])).join(' | ');
-  return [line(keys),widths.map(n=>'-'.repeat(n)).join('-+-'),...rows.map(line)].join('\n');
+  const line=r=>r.map((v,i)=>(v.length>widths[i]?v.slice(0,widths[i]-3)+'...':v).padEnd(widths[i])).join('  ');
+  return [line(keys.map(k=>k.replaceAll('_',' '))),widths.map(n=>'-'.repeat(n)).join('  '),...rows.map(line)].join('\n');
  }
  if(data&&typeof data==='object')return Object.entries(data).map(([k,v])=>`${k}:\n${Array.isArray(v)||typeof v==='object'?format(v):v}`).join('\n\n');
  return String(data);

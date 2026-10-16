@@ -9,7 +9,7 @@
       },
       {
         "title": "Support and renewals",
-        "sql": "select * from v_renewals order by due_on"
+        "sql": "select name,kind,due_on,owner from v_renewals order by due_on"
       }
     ]
   },
